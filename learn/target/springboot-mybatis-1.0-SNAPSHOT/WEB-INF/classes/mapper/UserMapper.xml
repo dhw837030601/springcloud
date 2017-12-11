@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dhw.mapper.UserMapper">
+
+    <resultMap type="dhw.bean.User" id="UserMap">
+      <id column="id" property="id"/>
+      <result column="name" property="name"/>
+      <result column="age" property="age"/>
+        <association property="feature" column="featureId" resultMap="dhw.mapper.FeatureMapper.BaseResultMap"/>
+            <!--<result column="sex" property="sex"/>-->
+            <!--<result column="isGoodMan" property="isGoodMan"/>-->
+        <!--</association>-->
+     </resultMap>
+    <select id="selectById" parameterType="java.lang.Integer" resultMap="UserMap">
+        select o.id,o.name,o.age,feature.isGoodMan,feature.sex from user o left join feature  feature on feature.id=o.featureId
+        where o.id=#{id}
+    </select>
+</mapper>

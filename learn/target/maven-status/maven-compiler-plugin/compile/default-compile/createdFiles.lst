@@ -1,0 +1,12 @@
+dhw\controller\UserController.class
+dhw\exception\MyException.class
+dhw\utils\MD5Utils.class
+dhw\utils\RandomStrUtil.class
+dhw\mapper\UserMapper.class
+dhw\service\impl\UserServiceImpl.class
+dhw\service\UserService.class
+dhw\Application.class
+dhw\bean\FeatureInfo.class
+dhw\bean\User.class
+dhw\mapper\FeatureMapper.class
+dhw\utils\RandomUtils.class

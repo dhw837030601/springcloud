@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+
+</head>
+<body>
+    <div>
+        <form>
+            <table>
+                <tr>
+                    <td>用户名:<input type="text" name="userName" id="userName" value=""/></td>
+                </tr>
+                <tr>
+                    <td>密码:<input type="password" name="password" id="password" value=""/></td>
+                </tr>
+                <tr>
+                    <td><input type="button" id="loginBtn" value="登录"/></td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+<script src="static/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="static/bower_components/js-md5/jquery.md5.js"></script>
+<script>
+     $("#loginBtn").click(function(){
+        var userName = $("#userName").val();
+        var saltstr="HXWcjvQWVG1wI4FQBLZpQ3pWj48AV63d";
+		var password=$.md5($.md5($("#password").val().trim())+saltstr);
+        $.ajax({
+        	 type:'POST',
+             url:'/login',
+             data:{'userName':userName,'password':password},
+             dataType:'json',
+             success:function (data){
+            	 data = eval('('+data+')')
+            	 alert(data);
+                 if(data!="1"){
+                     alert("用户名或密码错误");
+                     window.location.reload();
+                 }else{
+                     alert("登录成功");
+                     window.location.href="/index";
+                 }
+             }
+        });
+     });
+
+</script>
+</body>
+</html>
