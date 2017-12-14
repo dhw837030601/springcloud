@@ -8,11 +8,44 @@
 
 </head>
 <body>
-    <div>
-        欢迎springboot 平台
+    <div class="container">
+        <table class="table">
+            <caption>${sysUser}</caption>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>User Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>aehyok</td>
+                    <td>leo</td>
+                    <td>@aehyok</td>
+                </tr>
+                <tr>
+                    <td>lynn</td>
+                    <td>thl</td>
+                    <td>@lynn</td>
+                </tr>
+                <#list productList as p>
+                <tr>
+                    <td>${p.id}</td>
+                    <td>${p.name}</td>
+                    <td>${p.pic}</td>
+                </tr>
+                   </#list>
+                
+            </tbody>
+        </table>
     </div>
 <script src="static/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="static/bower_components/js-md5/jquery.md5.js"></script>
+<script src="static/bower_components/js-md5/jquery.md5.js"></script>
+<script src="static/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+<link rel="stylesheet" href="static/css/bootstrap.min.css"></link>
+
 <script>
      /* $("#loginBtn").click(function(){
         var userName = $("#userName").val();
