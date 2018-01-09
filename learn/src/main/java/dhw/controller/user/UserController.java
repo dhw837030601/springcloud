@@ -1,4 +1,4 @@
-package dhw.controller;
+package dhw.controller.user;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,12 +15,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONArray;
+
+import dhw.bean.Product;
 import dhw.bean.User;
+import dhw.bean.page.Pagination;
+import dhw.bean.page.PaginationResult;
+import dhw.bean.page.Sort;
 import dhw.consts.ErrorEnum;
 import dhw.controller.base.BaseController;
 import dhw.exception.MyException;
 import dhw.mapper.UserMapper;
-import dhw.service.UserService;
+import dhw.service.product.ProductService;
+import dhw.service.user.UserService;
 import dhw.utils.AssembleErrJsonUtil;
 
 /**
@@ -40,6 +47,8 @@ public class UserController extends BaseController{
     private UserMapper userMapper;
     @Autowired
     private UserService userService;
+    @Autowired
+    private ProductService productService;
 
     @ResponseBody
     @RequestMapping("/user")
@@ -102,7 +111,10 @@ public class UserController extends BaseController{
      */
     @RequestMapping("/index")
     public String index(Model m) {
-    	m.addAttribute("productList", "");
+    	Sort sort = new Sort("id", Sort.DESC);
+    	PaginationResult<Product> pagenation = productService.getProductListByConditions(new Pagination(0,10,null,sort));
+    	m.addAttribute("pagenation", pagenation);
+    	m.addAttribute("productList",JSONArray.toJSONString(pagenation.getResult()));
         return "/index";
     }
     /**
@@ -118,7 +130,7 @@ public class UserController extends BaseController{
     public String toRegister(HttpServletRequest request,HttpServletResponse response) {
     	return "/a";
     }
-    @ResponseBody//, method = RequestMethod.POST
+    @ResponseBody
     @RequestMapping("/register")
     public String register(
     		@RequestParam(value="userName")String userName,

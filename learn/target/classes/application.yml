@@ -6,5 +6,5 @@ spring:
         encoding.enable: true
         encoding.force: true
     mvc:
-        view.prefix: /WEB-INF/jsp/
-        view.suffix: .jsp
+        view.prefix: /WEB-INF/html/
+        view.suffix: .html

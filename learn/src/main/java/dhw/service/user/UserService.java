@@ -1,4 +1,4 @@
-package dhw.service;
+package dhw.service.user;
 
 import dhw.bean.User;
 import dhw.exception.MyException;

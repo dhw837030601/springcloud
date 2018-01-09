@@ -1,4 +1,4 @@
-package dhw.service.impl;
+package dhw.service.user.impl;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,7 @@ import dhw.bean.User;
 import dhw.consts.ErrorEnum;
 import dhw.exception.MyException;
 import dhw.mapper.UserMapper;
-import dhw.service.UserService;
+import dhw.service.user.UserService;
 import dhw.utils.MD5Utils;
 @Service
 public class UserServiceImpl implements UserService{
