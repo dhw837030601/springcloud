@@ -35,10 +35,10 @@
 			var p = proList[i];
 			content += '<tr>'
 				+'<td>'+p.id+'</td>'
-				+'<td>'+p.name+'</td>'
-				+'<td>'+p.normalPrice+'￥</td>'
-				+'<td style="color:red;">'+p.memberPrice+'￥</td>'
-				+'<td>'+p.pic+'</td>'
+				+'<td>'+(typeof(p.name)=='undefined'?'':p.name)+'</td>'
+				+'<td>'+(typeof(p.normalPrice)=='undefined'?'':p.normalPrice)+'￥</td>'
+				+'<td style="color:red;">'+(typeof(p.memberPrice)=='undefined'?'':p.memberPrice)+'￥</td>'
+				+'<td>'+(typeof(p.pic)=='undefined'?'':p.pic)+'</td>'
 				+'</tr>'
 		}
 		$("#product").append(content);
