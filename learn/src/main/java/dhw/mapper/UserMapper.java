@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import dhw.bean.User;
-import tk.mybatis.mapper.common.Mapper;
+import dhw.mybatis.MyMapper;
 
 /**
  * @author 段华微
@@ -16,7 +16,7 @@ import tk.mybatis.mapper.common.Mapper;
  * reserved
  */
 //@Mapper
-public interface UserMapper extends Mapper<User>{
+public interface UserMapper extends MyMapper<User>{
 	/**
 	 * 
 	 * @description 根据名字查询用户
